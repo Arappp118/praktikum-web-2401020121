@@ -23,7 +23,8 @@ Route::get('/mahasiswa', function (Request $request) {
             $sql .= ' AND (m.nim LIKE :kata_kunci_nim
                         OR m.nama LIKE :kata_kunci_nama
                         OR m.email LIKE :kata_kunci_email)';
-            $nilaiPencarian = '%' . $kataKunci . '%';
+            //$nilaiPencarian = '%' . $kataKunci . '%';
+            $nilaiPencarian = '%' . addcslashes($kataKunci, '%_\\') . '%';
             $parameter['kata_kunci_nim'] = $nilaiPencarian;
             $parameter['kata_kunci_nama'] = $nilaiPencarian;
             $parameter['kata_kunci_email'] = $nilaiPencarian;
